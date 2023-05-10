@@ -8,11 +8,23 @@
 import Foundation
 
 enum Const {
-   
-    static let fontSizeLarge: CGFloat = 18
-    static let fontSizeMedium: CGFloat = 14
-    static let fontSizeSmall: CGFloat = 10
+    
+    static let imageCard = "imageCard"
+    static let imageTrash = "trash_white"
+    static let imageEye = "eye_white"
+    
+    static let fontSizeL: CGFloat = 22
+    static let fontSizeM: CGFloat = 18
+    static let fontSizeS: CGFloat = 14
 
-    static let colorBlue = "colorBlue"
-    static let colorWhite = "colorWhite"
+    static let mainColor = "mainColor"
+    static let cardBackgroundColor = "cardBackgroundColor"
+    static let colorBlack = "colorBlack"
+    static let backgroundColor = "backgroundColor"
+    static let colorDarkGrey = "darkGrey"
+    static let accentColor = "accentColor"
+    
+    static let paddingL: CGFloat = 36
+    static let paddingM: CGFloat = 16
+    static let paddingS: CGFloat = 8
 }
