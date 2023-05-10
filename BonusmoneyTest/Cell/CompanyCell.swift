@@ -21,21 +21,26 @@ class CompanyCell: UITableViewCell {
     
     private let dividerTop = UIView()
     
-    private let pointStackView = UIStackView()
+    private let pointStackView = HorizontalStackView(distribution: .fill,
+                                                     alignment: .bottom,
+                                                     spacing: Const.paddingS)
+    
     private let point = UILabel()
     private let pointTitle = UILabel()
     
-    private let cashbackStackView = UIStackView()
+    private let cashbackStackView = VerticalStackView()
     private let cashback = UILabel()
     private let cashbackTitle = UILabel()
     
-    private let levelStackView = UIStackView()
+    private let levelStackView = VerticalStackView()
     private let level = UILabel()
     private let levelTitle = UILabel()
     
     private let dividerBottom = UIView()
-    
-    private let buttonsStackView = UIStackView()
+   
+    private let buttonsStackView = HorizontalStackView(distribution: .equalSpacing,
+                                                       alignment: .center,
+                                                       spacing: Const.paddingL)
     private let viewsButton = UIButton(type: .system)
     private let trashButton = UIButton(type: .system)
     private let moreButton = UIButton(type: .system)
@@ -184,10 +189,6 @@ extension CompanyCell {
         pointStackView.addArrangedSubview(point)
         pointStackView.addArrangedSubview(pointTitle)
         pointStackView.addArrangedSubview(spacerView)
-        pointStackView.axis = .horizontal
-        pointStackView.distribution = .fill
-        pointStackView.alignment = .bottom
-        pointStackView.spacing = Const.paddingS
         
         point.text = "200"
         point.font = .systemFont(ofSize: Const.fontSizeL)
@@ -209,10 +210,6 @@ extension CompanyCell {
     private func configureCashbackView() {
         cashbackStackView.addArrangedSubview(cashbackTitle)
         cashbackStackView.addArrangedSubview(cashback)
-        cashbackStackView.axis = .vertical
-        cashbackStackView.distribution = .fill
-        cashbackStackView.alignment = .leading
-        cashbackStackView.spacing = Const.paddingS
         
         cashback.text = "1 %"
         cashback.font = .systemFont(ofSize: Const.fontSizeM)
@@ -234,10 +231,6 @@ extension CompanyCell {
     private func configureLevelView() {
         levelStackView.addArrangedSubview(levelTitle)
         levelStackView.addArrangedSubview(level)
-        levelStackView.axis = .vertical
-        levelStackView.distribution = .fill
-        levelStackView.alignment = .leading
-        levelStackView.spacing = Const.paddingS
         
         level.text = "Базовый уровень тест"
         level.font = .systemFont(ofSize: Const.fontSizeM)
@@ -287,10 +280,6 @@ extension CompanyCell {
         buttonsStackView.addArrangedSubview(viewsButton)
         buttonsStackView.addArrangedSubview(trashButton)
         buttonsStackView.addArrangedSubview(moreButton)
-        buttonsStackView.axis = .horizontal
-        buttonsStackView.distribution = .equalSpacing
-        buttonsStackView.alignment = .center
-        buttonsStackView.spacing = Const.paddingL
         
         viewsButton.setImage(UIImage(named: Const.imageEye), for: .normal)
         viewsButton.tintColor = UIColor(named: Const.mainColor)
