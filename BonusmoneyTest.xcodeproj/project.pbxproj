@@ -21,6 +21,11 @@
 		B5ED3DEC2A0BBD100010794B /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3DEB2A0BBD100010794B /* UIView + ext.swift */; };
 		B5ED3DF02A0C2A9F0010794B /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3DEF2A0C2A9F0010794B /* VerticalStackView.swift */; };
 		B5ED3DF22A0C2C640010794B /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3DF12A0C2C640010794B /* HorizontalStackView.swift */; };
+		B5ED3DF42A0C2DC90010794B /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3DF32A0C2DC90010794B /* TopView.swift */; };
+		B5ED3DF62A0C2F890010794B /* MiddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3DF52A0C2F890010794B /* MiddleView.swift */; };
+		B5ED3DF82A0C345F0010794B /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3DF72A0C345F0010794B /* DividerView.swift */; };
+		B5ED3DFA2A0C34F50010794B /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3DF92A0C34F50010794B /* BottomView.swift */; };
+		B5ED3DFC2A0C3AD80010794B /* UILabel + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3DFB2A0C3AD80010794B /* UILabel + ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +45,11 @@
 		B5ED3DEB2A0BBD100010794B /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 		B5ED3DEF2A0C2A9F0010794B /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		B5ED3DF12A0C2C640010794B /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
+		B5ED3DF32A0C2DC90010794B /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		B5ED3DF52A0C2F890010794B /* MiddleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleView.swift; sourceTree = "<group>"; };
+		B5ED3DF72A0C345F0010794B /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
+		B5ED3DF92A0C34F50010794B /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
+		B5ED3DFB2A0C3AD80010794B /* UILabel + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,9 +124,8 @@
 		B56F20C82A0BA7EF00DCD54E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B5ED3DFE2A0C42210010794B /* Extension */,
 				B56F20C92A0BA82C00DCD54E /* Const.swift */,
-				B5ED3DEB2A0BBD100010794B /* UIView + ext.swift */,
-				B56F20C32A0BA13F00DCD54E /* Bundle + ext.swift */,
 				B5ED3DEF2A0C2A9F0010794B /* VerticalStackView.swift */,
 				B5ED3DF12A0C2C640010794B /* HorizontalStackView.swift */,
 			);
@@ -126,9 +135,31 @@
 		B56F20CB2A0BAB9E00DCD54E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				B5ED3DFD2A0C41FA0010794B /* SubViewCell */,
 				B56F20CC2A0BABF300DCD54E /* CompanyCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		B5ED3DFD2A0C41FA0010794B /* SubViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B5ED3DF32A0C2DC90010794B /* TopView.swift */,
+				B5ED3DF52A0C2F890010794B /* MiddleView.swift */,
+				B5ED3DF92A0C34F50010794B /* BottomView.swift */,
+				B5ED3DF72A0C345F0010794B /* DividerView.swift */,
+			);
+			path = SubViewCell;
+			sourceTree = "<group>";
+		};
+		B5ED3DFE2A0C42210010794B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B5ED3DEB2A0BBD100010794B /* UIView + ext.swift */,
+				B56F20C32A0BA13F00DCD54E /* Bundle + ext.swift */,
+				B5ED3DFB2A0C3AD80010794B /* UILabel + ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,14 +235,19 @@
 			files = (
 				B56F20BE2A0B7F3200DCD54E /* Model.swift in Sources */,
 				B56F20A92A09992600DCD54E /* ViewController.swift in Sources */,
+				B5ED3DF82A0C345F0010794B /* DividerView.swift in Sources */,
 				B56F20A52A09992600DCD54E /* AppDelegate.swift in Sources */,
 				B56F20C42A0BA13F00DCD54E /* Bundle + ext.swift in Sources */,
+				B5ED3DF62A0C2F890010794B /* MiddleView.swift in Sources */,
 				B5ED3DEC2A0BBD100010794B /* UIView + ext.swift in Sources */,
 				B56F20CD2A0BABF300DCD54E /* CompanyCell.swift in Sources */,
+				B5ED3DFC2A0C3AD80010794B /* UILabel + ext.swift in Sources */,
 				B56F20B92A09994000DCD54E /* NetworkService.swift in Sources */,
+				B5ED3DFA2A0C34F50010794B /* BottomView.swift in Sources */,
 				B5ED3DF02A0C2A9F0010794B /* VerticalStackView.swift in Sources */,
 				B56F20CA2A0BA82C00DCD54E /* Const.swift in Sources */,
 				B5ED3DF22A0C2C640010794B /* HorizontalStackView.swift in Sources */,
+				B5ED3DF42A0C2DC90010794B /* TopView.swift in Sources */,
 				B56F20A72A09992600DCD54E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

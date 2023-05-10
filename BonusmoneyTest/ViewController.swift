@@ -37,10 +37,8 @@ class ViewController: UIViewController {
         topView.addSubviewAndTamic(titleLabel)
         topView.backgroundColor = UIColor(named: Const.cardBackgroundColor)
         
-        titleLabel.font = .systemFont(ofSize: Const.fontSizeL)
-        titleLabel.textColor = UIColor(named: Const.mainColor)
+        titleLabel.setText(title: "Управление картами", size: .l, color: .main)
         titleLabel.textAlignment = .center
-        titleLabel.text = "Управление картами"
         
         NSLayoutConstraint.activate([
             topView.topAnchor.constraint(equalTo: view.topAnchor),
