@@ -7,8 +7,10 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
 
+    let listData = Bundle.main.decode([Company].self, from: "mocData.json")
     let networkService = NetworkService()
     
     override func viewDidLoad() {
@@ -16,15 +18,13 @@ class ViewController: UIViewController {
 
         view.backgroundColor = .blue
         
-        networkService.request(offset: 0) { data, error in
-            if let error = error {
-                print("Error received request data: ", error.localizedDescription)
-            }
-            print(data)
-        }
-        
+//        networkService.request(offset: 0) { data, error in
+//            if let error = error {
+//                print("Error received request data: ", error.localizedDescription)
+//            }
+//            print(data)
+//        }
+        print(listData.count)
     }
-
-
 }
 
