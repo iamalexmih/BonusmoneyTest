@@ -91,13 +91,12 @@
 			isa = PBXGroup;
 			children = (
 				B56F20BB2A0B7E6600DCD54E /* App */,
-				B56F20A82A09992600DCD54E /* ViewController.swift */,
-				B5ED3E092A0D02620010794B /* ParentViewController.swift */,
-				B5ED3E032A0CEBDB0010794B /* ViewModel.swift */,
-				B5ED3E0B2A0D07A50010794B /* FooterView.swift */,
-				B56F20CB2A0BAB9E00DCD54E /* Cell */,
-				B56F20C82A0BA7EF00DCD54E /* Helpers */,
 				B56F20BD2A0B7F3200DCD54E /* Model.swift */,
+				B56F20A82A09992600DCD54E /* ViewController.swift */,
+				B5ED3E032A0CEBDB0010794B /* ViewModel.swift */,
+				B56F20C82A0BA7EF00DCD54E /* Helpers */,
+				B5ED3E0D2A0D345B0010794B /* Component */,
+				B56F20CB2A0BAB9E00DCD54E /* Cell */,
 				B56F20BF2A0B9C1600DCD54E /* Service */,
 				B56F20BC2A0B7E7200DCD54E /* Resource */,
 			);
@@ -172,6 +171,15 @@
 				B5ED3DFB2A0C3AD80010794B /* UILabel + ext.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		B5ED3E0D2A0D345B0010794B /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				B5ED3E092A0D02620010794B /* ParentViewController.swift */,
+				B5ED3E0B2A0D07A50010794B /* FooterView.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
