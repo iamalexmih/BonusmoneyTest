@@ -30,6 +30,7 @@
 		B5ED3E022A0CDC3A0010794B /* ApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3E012A0CDC3A0010794B /* ApiUrl.swift */; };
 		B5ED3E042A0CEBDB0010794B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3E032A0CEBDB0010794B /* ViewModel.swift */; };
 		B5ED3E082A0CEC5D0010794B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3E072A0CEC5D0010794B /* Event.swift */; };
+		B5ED3E0A2A0D02620010794B /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3E092A0D02620010794B /* ParentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		B5ED3E012A0CDC3A0010794B /* ApiUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUrl.swift; sourceTree = "<group>"; };
 		B5ED3E032A0CEBDB0010794B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		B5ED3E072A0CEC5D0010794B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		B5ED3E092A0D02620010794B /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			children = (
 				B56F20BB2A0B7E6600DCD54E /* App */,
 				B56F20A82A09992600DCD54E /* ViewController.swift */,
+				B5ED3E092A0D02620010794B /* ParentViewController.swift */,
 				B5ED3E032A0CEBDB0010794B /* ViewModel.swift */,
 				B56F20CB2A0BAB9E00DCD54E /* Cell */,
 				B56F20C82A0BA7EF00DCD54E /* Helpers */,
@@ -262,6 +265,7 @@
 				B5ED3DFA2A0C34F50010794B /* BottomView.swift in Sources */,
 				B5ED3DF02A0C2A9F0010794B /* VerticalStackView.swift in Sources */,
 				B56F20CA2A0BA82C00DCD54E /* Const.swift in Sources */,
+				B5ED3E0A2A0D02620010794B /* ParentViewController.swift in Sources */,
 				B5ED3DF22A0C2C640010794B /* HorizontalStackView.swift in Sources */,
 				B5ED3DF42A0C2DC90010794B /* TopView.swift in Sources */,
 				B56F20A72A09992600DCD54E /* SceneDelegate.swift in Sources */,

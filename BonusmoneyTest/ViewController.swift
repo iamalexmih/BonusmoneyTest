@@ -8,39 +8,37 @@
 import UIKit
 
 
-class ViewController: UIViewController {
-
-//    private let listData = Bundle.main.decode([Company].self, from: "mocData.json")
-    var viewModel: ViewModel!
+class ViewController: ParentViewController {
     
+    //    private let listData = Bundle.main.decode([Company].self, from: "mocData.json")
+    var viewModel: ViewModel!
     private let tableView = UITableView()
-    private let topView = UIView()
-    private let titleLabel = UILabel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configTitle()
         tableViewConfig()
-        layoutTableView()
         
         observeEvent()
         loadCompany(offset: 0)
     }
     
+    
     private func loadCompany(offset: Int) {
         viewModel.fetchCompany(offset)
     }
+    
     
     private func observeEvent() {
         self.viewModel.eventHandler = { [weak self] event in
             guard let self = self else { return }
             switch event {
             case .startLoading:
-//                self.startLoadingIndicator()
+                //                self.startLoadingIndicator()
                 print("startLoadingIndicator")
             case .dataLoaded:
-//                self.stopLoadingIndicator()
+                //                self.stopLoadingIndicator()
                 print("stopLoadingIndicator")
                 self.tableView.reloadData()
             case .error(let error):
@@ -50,39 +48,16 @@ class ViewController: UIViewController {
     }
     
     
-    func showErrorAlert(_ error: ApiError?) {
-        guard let error = error else { return }
-        let message = "\(error.description). \(Const.Alert.restart)"
-        let action = UIAlertAction(title: Const.Alert.actionTitle,
-                                   style: .default)
-        let alertLogOut = UIAlertController(title: Const.Alert.messageTitle,
-                                            message: message,
-                                            preferredStyle: .alert)
-        alertLogOut.addAction(action)
-        present(alertLogOut, animated: true)
+    override func restart(action: UIAlertAction) {
+        loadCompany(offset: viewModel.offset)
     }
-    
-    
-    private func configTitle() {
-        view.addSubviewAndTamic(topView)
-        topView.addSubviewAndTamic(titleLabel)
-        topView.backgroundColor = UIColor(named: Const.cardBackgroundColor)
-        
-        titleLabel.setText(title: "Управление картами", size: .l, color: .main)
-        titleLabel.textAlignment = .center
-        
-        NSLayoutConstraint.activate([
-            topView.topAnchor.constraint(equalTo: view.topAnchor),
-            topView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            topView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            titleLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: Const.fontSizeM * 2.5),
-            titleLabel.centerXAnchor.constraint(equalTo: topView.centerXAnchor),
-            
-            topView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Const.fontSizeM)
-        ])
-    }
-    
+}
+
+
+
+// MARK: - TableView
+
+extension ViewController {
     private func tableViewConfig() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -90,10 +65,7 @@ class ViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor(named: Const.backgroundColor)
         tableView.separatorStyle = .none
-    }
-    
-    
-    private func layoutTableView() {
+        
         view.addSubview(tableView)
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -103,12 +75,15 @@ class ViewController: UIViewController {
 }
 
 
-// MARK: - TableView
+
+// MARK: - TableView Delegate and DataSource
+
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.listCompany.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CompanyCell.cellId, for: indexPath) as! CompanyCell
