@@ -9,13 +9,20 @@ import Foundation
 
 
 protocol ViewModelProtocol {
+    var listCompanies: [Company] { get }
+    var offset: Int { get }
+    var eventHandler: ((_ event: Event) -> Void)? { get set }
     
+    init(networkService: NetworkServiceProtocol)
+    func fetchCompany(_ offset: Int)
+    func isLoadMoreData(_ indexPath: IndexPath) -> Bool
+    func offsetPlusOne()
 }
 
 
-class ViewModel {
+class ViewModel: ViewModelProtocol {
     var listCompanies: [Company] = []
-    var newCompanies: [Company] = []
+    private var newCompanies: [Company] = []
     var offset: Int = 0
     var networkService: NetworkServiceProtocol
     var eventHandler: ((_ event: Event) -> Void)?

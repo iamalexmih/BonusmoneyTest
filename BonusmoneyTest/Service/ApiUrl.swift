@@ -12,9 +12,10 @@ class ApiUrl {
         var components = URLComponents()
         components.scheme = "http"
         components.host = "dev.bonusmoney.pro"
+        components.path = "/mobileapp/getAllCompanies"
 //        components.path = "/mobileapp/getAllCompaniesIdeal"
 //        components.path = "/mobileapp/getAllCompaniesError"
-        components.path = "/mobileapp/getAllCompaniesLong"
+//        components.path = "/mobileapp/getAllCompaniesLong"
         return components.url
     }
     

@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: ParentViewController {
     
-    var viewModel: ViewModel!
+    var viewModel: ViewModelProtocol!
     private let tableView = UITableView()
     private lazy var footerView = FooterView()
     
@@ -85,7 +85,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CompanyCell.cellId, for: indexPath) as! CompanyCell
-        
+        let idCompany = viewModel.listCompanies[indexPath.row].company.companyId
+        cell.saveIdCompany(idCompany)
+        cell.alertsDelegate = self
         return cell
     }
     
@@ -101,4 +103,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             loadCompany(offset: viewModel.offset)
         }
     }
+}
+
+
+extension ViewController: AlertProtocol {
+    func presentAlert(title: String, _ idCompany: String) {
+        let action = UIAlertAction(title: Const.Alert.actionTitle,
+                                   style: .default)
+        let alertLogOut = UIAlertController(title: title,
+                                            message: Const.Alert.idCompany + idCompany,
+                                            preferredStyle: .alert)
+        alertLogOut.addAction(action)
+        present(alertLogOut, animated: true)
+    } 
 }

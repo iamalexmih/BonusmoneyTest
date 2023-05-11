@@ -13,9 +13,9 @@ final class BottomView: UIView {
     private let buttonsStackView = HorizontalStackView(distribution: .equalSpacing,
                                                        alignment: .center,
                                                        spacing: Const.paddingL)
-    private let viewsButton = UIButton(type: .system)
-    private let trashButton = UIButton(type: .system)
-    private let moreButton = UIButton(type: .system)
+    let viewsButton = UIButton(type: .system)
+    let trashButton = UIButton(type: .system)
+    let moreButton = UIButton(type: .system)
     
     
     override init(frame: CGRect) {

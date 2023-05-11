@@ -32,5 +32,6 @@ enum Const {
         static let restart = "\n \nRestart"
         static let actionTitle = "OK"
         static let messageTitle = "Oops"
+        static let idCompany = "ID Компании: "
     }
 }

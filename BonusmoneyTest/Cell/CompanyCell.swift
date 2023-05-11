@@ -8,9 +8,15 @@
 import UIKit
 
 
+protocol AlertProtocol: AnyObject {
+    func presentAlert(title: String, _ idCompany: String)
+}
+
+
 class CompanyCell: UITableViewCell {
     
     static let cellId = "CompanyCell"
+    var alertsDelegate : AlertProtocol?
     
     private let cardView = UIView()
     private let topView = TopView()
@@ -19,6 +25,8 @@ class CompanyCell: UITableViewCell {
     private let dividerBottom = DividerView()
     private let bottomView = BottomView()
     
+    private var idCompany: String = ""
+   
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -26,6 +34,12 @@ class CompanyCell: UITableViewCell {
         addSubView()
         configureContainerView()
         setConstraints()
+        addTargetButton()
+    }
+    
+    func saveIdCompany(_ idCompany: String?) {
+        guard let idCompany = idCompany else { return }
+        self.idCompany = idCompany
     }
     
     
@@ -56,6 +70,30 @@ extension CompanyCell {
     }
 }
 
+
+// MARK: - Action Buttons
+
+extension CompanyCell {
+    private func addTargetButton() {
+        bottomView.viewsButton.addTarget(self, action: #selector(viewsButtonPress), for: .touchUpInside)
+        bottomView.trashButton.addTarget(self, action: #selector(trashButtonPress), for: .touchUpInside)
+        bottomView.moreButton.addTarget(self, action: #selector(moreButtonPress), for: .touchUpInside)
+    }
+    
+    @objc func viewsButtonPress() {
+        alertsDelegate?.presentAlert(title:"Views Button", idCompany)
+    }
+    
+    
+    @objc func trashButtonPress() {
+        alertsDelegate?.presentAlert(title:"Trash Button", idCompany)
+    }
+    
+    
+    @objc func moreButtonPress() {
+        alertsDelegate?.presentAlert(title:"More Button", idCompany)
+    }
+}
 
 
 // MARK: - Set Constraints

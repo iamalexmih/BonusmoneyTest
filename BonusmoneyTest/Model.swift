@@ -15,5 +15,5 @@ struct Company: Codable {
 
 
 struct CompanyId: Codable {
-    let companyId: String
+    let companyId: String?
 }

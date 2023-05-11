@@ -11,16 +11,13 @@ class FooterView: UIView {
     
     private var footerLabel: UILabel = {
        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.setText(title: "Подгрузка компаний", size: .m, color: .black)
         return label
     }()
     
     private var footerLoadIndicate: UIActivityIndicatorView = {
        let indicate = UIActivityIndicatorView()
         indicate.style = .large
-        indicate.translatesAutoresizingMaskIntoConstraints = false
         indicate.hidesWhenStopped = true
         return indicate
     }()
@@ -29,8 +26,8 @@ class FooterView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(footerLabel)
-        addSubview(footerLoadIndicate)
+        addSubviewAndTamic(footerLabel)
+        addSubviewAndTamic(footerLoadIndicate)
         
         self.frame.size.height = 70
         
