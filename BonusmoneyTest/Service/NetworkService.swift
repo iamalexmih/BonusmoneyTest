@@ -52,7 +52,6 @@ final class NetworkService: NetworkServiceProtocol {
             }
             if let response = response as? HTTPURLResponse,
                       !(200...299).contains(response.statusCode) {
-                
                 completion(.failure(.badResponse(response: response, statusCode: response.statusCode)))
             }
             

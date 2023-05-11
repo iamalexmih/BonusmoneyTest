@@ -80,6 +80,7 @@ extension CompanyCell {
         bottomView.moreButton.addTarget(self, action: #selector(moreButtonPress), for: .touchUpInside)
     }
     
+    
     @objc func viewsButtonPress() {
         alertsDelegate?.presentAlert(title:"Views Button", idCompany)
     }

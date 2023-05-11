@@ -14,6 +14,7 @@ class ViewController: ParentViewController {
     private let tableView = UITableView()
     private lazy var footerView = FooterView()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,7 +65,7 @@ extension ViewController {
         tableView.separatorStyle = .none
         tableView.tableFooterView = footerView
         
-        view.addSubview(tableView)
+        view.addSubviewAndTamic(tableView)
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
@@ -105,6 +106,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+
+
+// MARK: - Alert Protocol
 
 extension ViewController: AlertProtocol {
     func presentAlert(title: String, _ idCompany: String) {
