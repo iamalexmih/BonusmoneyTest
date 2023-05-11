@@ -27,4 +27,10 @@ enum Const {
     static let paddingL: CGFloat = 36
     static let paddingM: CGFloat = 16
     static let paddingS: CGFloat = 8
+    
+    enum Alert {
+        static let restart = "\n \nRestart"
+        static let actionTitle = "OK"
+        static let messageTitle = "Oops"
+    }
 }

@@ -26,6 +26,10 @@
 		B5ED3DF82A0C345F0010794B /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3DF72A0C345F0010794B /* DividerView.swift */; };
 		B5ED3DFA2A0C34F50010794B /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3DF92A0C34F50010794B /* BottomView.swift */; };
 		B5ED3DFC2A0C3AD80010794B /* UILabel + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3DFB2A0C3AD80010794B /* UILabel + ext.swift */; };
+		B5ED3E002A0CC9BC0010794B /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3DFF2A0CC9BC0010794B /* ApiError.swift */; };
+		B5ED3E022A0CDC3A0010794B /* ApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3E012A0CDC3A0010794B /* ApiUrl.swift */; };
+		B5ED3E042A0CEBDB0010794B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3E032A0CEBDB0010794B /* ViewModel.swift */; };
+		B5ED3E082A0CEC5D0010794B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED3E072A0CEC5D0010794B /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,10 @@
 		B5ED3DF72A0C345F0010794B /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		B5ED3DF92A0C34F50010794B /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		B5ED3DFB2A0C3AD80010794B /* UILabel + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + ext.swift"; sourceTree = "<group>"; };
+		B5ED3DFF2A0CC9BC0010794B /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		B5ED3E012A0CDC3A0010794B /* ApiUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUrl.swift; sourceTree = "<group>"; };
+		B5ED3E032A0CEBDB0010794B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		B5ED3E072A0CEC5D0010794B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,7 @@
 			children = (
 				B56F20BB2A0B7E6600DCD54E /* App */,
 				B56F20A82A09992600DCD54E /* ViewController.swift */,
+				B5ED3E032A0CEBDB0010794B /* ViewModel.swift */,
 				B56F20CB2A0BAB9E00DCD54E /* Cell */,
 				B56F20C82A0BA7EF00DCD54E /* Helpers */,
 				B56F20BD2A0B7F3200DCD54E /* Model.swift */,
@@ -117,6 +126,9 @@
 			isa = PBXGroup;
 			children = (
 				B56F20B82A09994000DCD54E /* NetworkService.swift */,
+				B5ED3E012A0CDC3A0010794B /* ApiUrl.swift */,
+				B5ED3DFF2A0CC9BC0010794B /* ApiError.swift */,
+				B5ED3E072A0CEC5D0010794B /* Event.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -234,14 +246,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				B56F20BE2A0B7F3200DCD54E /* Model.swift in Sources */,
+				B5ED3E002A0CC9BC0010794B /* ApiError.swift in Sources */,
 				B56F20A92A09992600DCD54E /* ViewController.swift in Sources */,
 				B5ED3DF82A0C345F0010794B /* DividerView.swift in Sources */,
+				B5ED3E082A0CEC5D0010794B /* Event.swift in Sources */,
 				B56F20A52A09992600DCD54E /* AppDelegate.swift in Sources */,
 				B56F20C42A0BA13F00DCD54E /* Bundle + ext.swift in Sources */,
 				B5ED3DF62A0C2F890010794B /* MiddleView.swift in Sources */,
 				B5ED3DEC2A0BBD100010794B /* UIView + ext.swift in Sources */,
+				B5ED3E022A0CDC3A0010794B /* ApiUrl.swift in Sources */,
 				B56F20CD2A0BABF300DCD54E /* CompanyCell.swift in Sources */,
 				B5ED3DFC2A0C3AD80010794B /* UILabel + ext.swift in Sources */,
+				B5ED3E042A0CEBDB0010794B /* ViewModel.swift in Sources */,
 				B56F20B92A09994000DCD54E /* NetworkService.swift in Sources */,
 				B5ED3DFA2A0C34F50010794B /* BottomView.swift in Sources */,
 				B5ED3DF02A0C2A9F0010794B /* VerticalStackView.swift in Sources */,

@@ -8,60 +8,68 @@
 import Foundation
 
 
-final class NetworkService {
+protocol NetworkServiceProtocol: AnyObject {
+    func request(offset: Int, completion: @escaping (Result<[Company], ApiError>) -> Void)
+}
+
+final class NetworkService: NetworkServiceProtocol {
     
-    // Построение запроса по данным url
-    func request(offset: Int, completion: @escaping (Data?, Error?) -> Void) {
-//        let parameters = self.prepareParameters(searchText: searchText)
-        let url = self.url()
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.allHTTPHeaderFields = prepareHeader()
-        request.httpBody = prepareBody(offset)
-        let task = createDataTask(from: request, completion: completion)
-        task.resume()
-    }
-    
-    
-    private func createDataTask(from request: URLRequest,
-                                completion: @escaping(Data?, Error?) -> Void) -> URLSessionDataTask {
-        return URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let response = response as? HTTPURLResponse else { return }
-            let statusCode = response.statusCode
-            print("statusCode ", statusCode)
+    func request(offset: Int, completion: @escaping (Result<[Company], ApiError>) -> Void) {
+        let url = ApiUrl.url()
+        
+        performRequest(with: url, offset: offset, type: [Company].self) { result in
             DispatchQueue.main.async {
-                completion(data, error)
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(let data):
+                    completion(.success(data))
+                }
             }
         }
     }
     
     
-    private func url() -> URL {
-        var components = URLComponents()
-        components.scheme = "http"
-        components.host = "dev.bonusmoney.pro"
-        components.path = "/mobileapp/getAllCompaniesIdeal"
-        return components.url!
-    }
-    
-    
-    private func prepareHeader() -> [String: String] {
-        var headers: [String: String] = [:]
-        headers["TOKEN"] = "123"
-        return headers
-    }
-    
-    
-    private func prepareBody(_ offset: Int) -> Data {
-        var body: [String: Int] = [:]
-        body["offset"] = offset
-        var httpBody = Data()
-        do {
-            httpBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
-        } catch let error {
-            print(error.localizedDescription)
+    private func performRequest<T: Decodable>(with url: URL?,
+                                              offset: Int,
+                                              type: T.Type,
+                                              completion: @escaping (Result<T, ApiError>) -> Void) {
+        guard let url = url else {
+            completion(.failure(.urlNotCreate))
+            return
         }
-        return httpBody
-    }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = ApiUrl.prepareHeader()
+        request.httpBody = ApiUrl.prepareBody(offset)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+
+            guard error == nil else {
+                completion(.failure(.internetConnectionLost))
+                return
+            }
+            if let response = response as? HTTPURLResponse,
+                      !(200...299).contains(response.statusCode) {
+                
+                completion(.failure(.badResponse(response: response, statusCode: response.statusCode)))
+            }
+            
+            guard let data = data else {
+                completion(.failure(.dataError))
+                return
+            }
+            
+            do {
+                if let decodedData = try? JSONDecoder().decode(type.self, from: data) {
+                    completion(.success(decodedData))
+                } else {
+                    completion(.failure(.decodeError))
+                }
+            }
+        }
+        task.resume()
+    } 
 }
 

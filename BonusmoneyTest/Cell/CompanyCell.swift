@@ -74,9 +74,9 @@ extension CompanyCell {
     
     private func setConstraintsCardView() {
         NSLayoutConstraint.activate([
+            cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Const.paddingM),
             cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Const.paddingM),
             cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Const.paddingM),
-            cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Const.paddingM),
             cardView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.92)
         ])
     }

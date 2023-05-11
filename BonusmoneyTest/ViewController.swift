@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    private let listData = Bundle.main.decode([Company].self, from: "mocData.json")
-    private let networkService = NetworkService()
+//    private let listData = Bundle.main.decode([Company].self, from: "mocData.json")
+    var viewModel: ViewModel!
     
     private let tableView = UITableView()
     private let topView = UIView()
@@ -19,18 +19,49 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configTitle()
         tableViewConfig()
         layoutTableView()
-//        networkService.request(offset: 0) { data, error in
-//            if let error = error {
-//                print("Error received request data: ", error.localizedDescription)
-//            }
-//            print(data)
-//        }
-//        print(listData.count)
+        
+        observeEvent()
+        loadCompany(offset: 0)
     }
+    
+    private func loadCompany(offset: Int) {
+        viewModel.fetchCompany(offset)
+    }
+    
+    private func observeEvent() {
+        self.viewModel.eventHandler = { [weak self] event in
+            guard let self = self else { return }
+            switch event {
+            case .startLoading:
+//                self.startLoadingIndicator()
+                print("startLoadingIndicator")
+            case .dataLoaded:
+//                self.stopLoadingIndicator()
+                print("stopLoadingIndicator")
+                self.tableView.reloadData()
+            case .error(let error):
+                self.showErrorAlert(error)
+            }
+        }
+    }
+    
+    
+    func showErrorAlert(_ error: ApiError?) {
+        guard let error = error else { return }
+        let message = "\(error.description). \(Const.Alert.restart)"
+        let action = UIAlertAction(title: Const.Alert.actionTitle,
+                                   style: .default)
+        let alertLogOut = UIAlertController(title: Const.Alert.messageTitle,
+                                            message: message,
+                                            preferredStyle: .alert)
+        alertLogOut.addAction(action)
+        present(alertLogOut, animated: true)
+    }
+    
     
     private func configTitle() {
         view.addSubviewAndTamic(topView)
@@ -76,7 +107,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        listData.count
+        viewModel.listCompany.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
