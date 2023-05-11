@@ -13,7 +13,8 @@ class ApiUrl {
         components.scheme = "http"
         components.host = "dev.bonusmoney.pro"
 //        components.path = "/mobileapp/getAllCompaniesIdeal"
-        components.path = "/mobileapp/getAllCompaniesError"
+//        components.path = "/mobileapp/getAllCompaniesError"
+        components.path = "/mobileapp/getAllCompaniesLong"
         return components.url
     }
     

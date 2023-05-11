@@ -14,8 +14,9 @@ protocol ViewModelProtocol {
 
 
 class ViewModel {
-    var listCompany: [Company] = []
-    var offset: Int = 1
+    var listCompanies: [Company] = []
+    var newCompanies: [Company] = []
+    var offset: Int = 0
     var networkService: NetworkServiceProtocol
     var eventHandler: ((_ event: Event) -> Void)?
     
@@ -29,9 +30,10 @@ class ViewModel {
         networkService.request(offset: offset) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let listCompany):
-                print(listCompany)
-                self.listCompany.append(contentsOf: listCompany)
+            case .success(let data):
+                print("listCompany: ", data)
+                self.newCompanies = data
+                self.listCompanies.append(contentsOf: data)
                 self.eventHandler?(.dataLoaded)
             case .failure(let error):
                 self.eventHandler?(.error(error))
@@ -40,7 +42,12 @@ class ViewModel {
     }
     
     
-//    func isLoadMoreData(_ indexPath: IndexPath) -> Bool {
-//        currentPages <= totalPages && indexPath.row == listLaunches.count - 1
-//    }
+    func offsetPlusOne() {
+        offset = offset + 1
+    }
+    
+    
+    func isLoadMoreData(_ indexPath: IndexPath) -> Bool {
+        !newCompanies.isEmpty && indexPath.row == listCompanies.count - 1
+    }
 }

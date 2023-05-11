@@ -10,10 +10,9 @@ import UIKit
 
 class ViewController: ParentViewController {
     
-    //    private let listData = Bundle.main.decode([Company].self, from: "mocData.json")
     var viewModel: ViewModel!
     private let tableView = UITableView()
-    
+    private lazy var footerView = FooterView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +34,9 @@ class ViewController: ParentViewController {
             guard let self = self else { return }
             switch event {
             case .startLoading:
-                //                self.startLoadingIndicator()
-                print("startLoadingIndicator")
+                footerView.showLoaderIndicate()
             case .dataLoaded:
-                //                self.stopLoadingIndicator()
-                print("stopLoadingIndicator")
+                footerView.hideLoaderIndicate()
                 self.tableView.reloadData()
             case .error(let error):
                 self.showErrorAlert(error)
@@ -65,6 +62,7 @@ extension ViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor(named: Const.backgroundColor)
         tableView.separatorStyle = .none
+        tableView.tableFooterView = footerView
         
         view.addSubview(tableView)
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -81,7 +79,7 @@ extension ViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.listCompany.count
+        viewModel.listCompanies.count
     }
     
     
@@ -94,5 +92,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 255
+    }
+    
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if viewModel.isLoadMoreData(indexPath) {
+            viewModel.offsetPlusOne()
+            loadCompany(offset: viewModel.offset)
+        }
     }
 }
